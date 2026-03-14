@@ -131,11 +131,100 @@ function compare(a: string, b: string): -1 | 0 | 1 {return 0}
 
 
 
-//Array methods(pending)
-//has
-//sum
-//filter
-//map
-//find
+// Array methods
+// includes()
+// This method determines whether an array includes certain value returning either true or false
+
+const array = [1,2,3]
+console.log(array.includes(2)) //Expected output: true
+
+const pets = ["cat", "elephant", "pig"]
+console.log(pets.includes("cat")) //Expected output: true
+
+// reduce()
+// This method iterates over an array and accumulates a result into a single value 
+// IMPORTANT: Always return the accumulator 
+
+const prices = [10, 30, 20]
+const total = prices.reduce((acc, price) => acc + price, 0)
+console.log(total) // Expected output: 60
+
+// The accumulator can also be an object — useful for grouping data
+const fruits = ["apple", "banana", "apple", "orange", "banana", "apple"]
+const count = fruits.reduce((acc, fruit) => {
+  acc[fruit] = (acc[fruit] ?? 0) + 1
+  return acc
+}, {} as Record<string, number>)
+console.log(count) // Expected output: { apple: 3, banana: 2, orange: 1 }
+
+
+// filter
+// Creates a new array with only the elements who acomplish the given condition (as a callback)
+// Returning a shallow copy - it means a new array, but nested objects still share the same memory reference
+// It means it doesn't modify the original copy 
+
+const words = ["spray", "elite", "exuberant", "destruction", "present"]
+const result = words.filter((word) => word.length > 6)
+console.log(result) // Expected output: ["exuberant", "destruction", "present"]
+
+// Practical example — filter active users
+const users = [
+  { name: "Andres", active: true },
+  { name: "Carlos", active: false },
+  { name: "Maria",  active: true },
+]
+const activeUsers = users.filter((user) => user.active)
+console.log(activeUsers) // Expected output: [{ name: "Andres" }, { name: "Maria" }]
+
+// map
+// Map method contains key-value pairs, also remembers the order of the original inserted values. 
+// Both primitive values and objects can be used as keys or values
+const map = new Map()
+
+map.set("a", 1);
+map.set("b", 2);
+map.set("c", 3);
+
+console.log(map.get("a")); // Expected output: 1
+
+// find
+// Returns the first element in the array provided if it satisfies the provided testing function
+// The index is taken on importance when using this method
+
+const dicksizes = [5, 33, 45, 125, 1];
+
+const found = dicksizes.find((element)=>element>12)
+
+console.log(found) // Expected output = 33
+
+// some
+// If it contains any value that satisfies the provided testing function the result is true or false
+const founds = dicksizes.some((element)=>element>12)
+
+console.log(founds) // Expected output = true
+// every
+// If all values satisfies the provided testing function the result is true or false
+const foundd = dicksizes.every((element)=>element>12)
+
+console.log(found) // Expected output = false
+
+// spread
+// same logic with arrays, nor objects...
+const user = {name: "gayson", email: "gayson@gmail.com"}
+const user2 = {...user, pilin: 20}
+
+user.name = "andrew"
+console.log(user)
+console.log(user2)
+
+// desestruct
+// Makes it possible to unpack variables from arrays or properties from objects into distincts variables. 
+
+const usergay = {namel: "gayson", email: "gayson@gmail.com"}
+const {namel, email} = usergay
+
+console.log (namel, email)
+
+
 
 
