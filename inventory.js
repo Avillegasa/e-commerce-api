@@ -9,12 +9,12 @@
 - We need data to work on (usually should be on a db, but we will use arrays for this practice)
 */
 var products = [
-    { id: 1, name: "Iphone XS", price: 300, category: "electronics", inStock: true, quantity: 2, },
-    { id: 2, name: "ZARA T-Shirt", price: 17.99, category: "clothing", inStock: true, quantity: 3, },
-    { id: 3, name: "Fingers & Wings", price: 8.99, category: "food", inStock: false, quantity: 0, },
-    { id: 4, name: "Bleach", price: 7, category: "cleaning", inStock: true, quantity: 1000, },
-    { id: 5, name: "Doom Eternal Legacy Edition", price: 50, category: "gaming", inStock: true, quantity: 30 },
-    { id: 6, name: "Logitech g502 Hero", price: 150, category: "electronics", inStock: false, quantity: 0 }
+    { id: 1, name: "Iphone XS", price: 300, category: "electronics", inStock: true, quantityp: 2, },
+    { id: 2, name: "ZARA T-Shirt", price: 17.99, category: "clothing", inStock: true, quantityp: 3, },
+    { id: 3, name: "Fingers & Wings", price: 8.99, category: "food", inStock: false, quantityp: 0, },
+    { id: 4, name: "Bleach", price: 7, category: "cleaning", inStock: true, quantityp: 1000, },
+    { id: 5, name: "Doom Eternal Legacy Edition", price: 50, category: "gaming", inStock: true, quantityp: 30 },
+    { id: 6, name: "Logitech g502 Hero", price: 150, category: "electronics", inStock: false, quantityp: 0 }
 ];
 // Query functions
 /*
@@ -50,7 +50,7 @@ var availableProducts = function (product) {
     if (!product.inStock) {
         return 0;
     }
-    return product.quantity;
+    return product.quantityp;
 };
 var cartItems = [];
 // Third Phase: Market car
@@ -67,5 +67,15 @@ var addToCart = function (product, quantity) {
         return cartItems;
     }
 };
+addToCart(products[0], 1);
 addToCart(products[1], 1);
 console.log(cartItems);
+// Calculating total 
+// Here car receives a total of items and the total price of all of them. (Following: price * quantity)
+console.log("Calcular total");
+var calcularTotal = function (Items) {
+    return Items.reduce(function (acc, item) {
+        return (item.quantity * item.product.price + acc);
+    }, 0);
+};
+console.log(calcularTotal(cartItems));
