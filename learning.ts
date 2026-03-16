@@ -187,6 +187,14 @@ map.set("c", 3);
 
 console.log(map.get("a")); // Expected output: 1
 
+//.map() method iterates through an array and transforms each element, returning a new array with transformed elements
+// e.g. if i have ⬇️
+const mapita = [{ nombre: "León", tipo: "mamifero" }, { nombre: "Tortuga", tipo: "reptil" }]
+
+// .map() could give me : ["León", "Tortuga"]
+// It works like filter and find, you give him a callback which receives each element. Key difference is you don't get true/false as a result.
+// Instead you receive the new array
+
 // find
 // Returns the first element in the array provided if it satisfies the provided testing function
 // The index is taken on importance when using this method
